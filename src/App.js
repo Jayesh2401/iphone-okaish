@@ -1,0 +1,650 @@
+import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+
+import "./App.css";
+// import video from "large.mp4"
+import { useEffect, useRef, useState } from "react";
+import { BiPlayCircle, BiPauseCircle } from "react-icons/bi";
+import { MdReplay } from "react-icons/md";
+import Seventh from "./Seventh";
+import Eighth from "./Eighth";
+import Ninth from "./Ninth";
+import Tenth from "./Tenth";
+import Eleventh from "./Eleventh";
+import Twelveth from "./Twelveth";
+import Thirteenth from "./Thirteenth";
+import Fourtheen from "./Fourtheen";
+import Fifteenth from "./Fifteenth";
+import Sixteenth from "./Sixteenth";
+import Seventeenth from "./Seventeenth";
+import Eighteenth from "./Eighteenth";
+import Ninteenth from "./Ninteenth";
+import Twenty from "./Twenty";
+import ScrollDelay from "./ScrollDelay";
+
+function App() {
+  const [currentImg, setCurrentImg] = useState("iPhone-14Pro-DeepPurpal2x.jpg");
+  const [currentImgIndex, setCurrentImgIndex] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const videoref = useRef(null);
+  const [sixthvideo, setSixthvideo] = useState("play");
+  const fifth = useRef(null);
+  const lockref = useRef(null);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+  const elment = document.querySelectorAll(".h2enlarge");
+  const enlargeElement = document.querySelector(".enlarge");
+
+  const timeline = gsap.timeline();
+  const enlargeTimeline = gsap.timeline();
+  const fadeO = gsap.timeline();
+  const sixth = gsap.timeline();
+  const fadeHeading = gsap.timeline();
+  const displayparaandpause = gsap.timeline();
+  const displayNone = gsap.timeline();
+  const ceramic = gsap.timeline();
+
+  // *************For font increase on scroll ***************
+  timeline.to(elment, { fontSize: "180px", duration: 1, x: -125, y: -40 });
+  ScrollTrigger.create({
+    animation: timeline,
+    trigger: ".orangeWrapper",
+    start: "top 50%",
+    end: "bottom 65%",
+    scrub: true,
+    // markers: true
+  });
+
+  // *******************
+
+  // fadeO.to(".enlarge", {
+  //   opacity: 0,
+  //   duration: 1,
+  //   display: "none",
+  // });
+  // fadeO.fromTo(
+  //   ".enlarge",
+  //   {
+  //     opacity: 1,
+  //     duration: 1,
+  //   },
+  //   { opacity: 0, display: "none" }
+  // );
+
+  // ******Enlarge "O" ****
+  enlargeTimeline.to(".enlarge", {
+    width: "255px",
+    height: "70px",
+    duration: 2,
+  });
+
+  ScrollTrigger.create({
+    animation: enlargeTimeline,
+    trigger: ".orangeWrapper",
+    start: "top 48%",
+    end: "bottom 70%",
+    scrub: true,
+  });
+  // ************************
+
+  // ************Fade "O" ***********
+  fadeO.to(".enlarge", {
+    opacity: 0,
+    duration: 0.1,
+    color: "transparent",
+    // display:"none"
+  });
+  ScrollTrigger.create({
+    animation: fadeO,
+    trigger: ".testing",
+    start: "top 48%",
+    end: "bottom 55.1%",
+    scrub: true,
+    // markers: true,
+  });
+  // **************
+
+  //  **********************fade heading***********
+  fadeHeading.to(elment, { opacity: 0, duration: 0.2 });
+  ScrollTrigger.create({
+    animation: fadeHeading,
+    trigger: ".testing2",
+    start: "top 65%",
+    end: "bottom 65%",
+    scrub: true,
+    // markers:true
+  });
+  // *****************
+
+  // sixth.to(".sixth", { y: -725 ,  x:-20 ,opacity:0, display:"none"})
+
+  // *******************Bring phone in "O" UI***************
+  sixth.to(".sixth ", { opacity: 1, display: "block", duration: 0.1 });
+
+  ScrollTrigger.create({
+    animation: sixth,
+    trigger: ".testing2",
+    start: "top 60%",
+    end: "bottom 61%",
+    scrub: true,
+    // markers: true,
+  });
+
+  // *********************
+
+  // ScrollTrigger.create({
+  //   animation: enlargeTimeline,
+  //   trigger: ".orangeWrapper",
+  //   start: "top 48%",
+  //   end: "bottom 70%",
+  //   scrub: true,
+  // });
+
+  // ************ display paragraph as heading disapper***********
+
+  displayparaandpause.to(".content_ContainerSixth", {
+    opacity: 1,
+    duration: 1,
+    visibility: "unset",
+  });
+
+  ScrollTrigger.create({
+    animation: displayparaandpause,
+    trigger: ".sixthVideo",
+    start: "top 80%",
+    end: "bottom 81%",
+    scrub: true,
+    // onL : ()=>{
+    //   fifth.current.classList.add("checkdispla");
+    // }
+    // markers:true
+  });
+
+  // **************************
+
+  // displayNone.to(".fifth",{
+  //   display:"none"
+  // });
+  // ScrollTrigger.create({
+  //   animation:displayNone,
+  //   trigger:".sixthVideo",
+  //   start:"top 90%",
+  //   end:"bottom 99%",
+  //   scrub:true,
+  //   markers:true,
+  // })
+
+  // ***************phone UI para opacity control **************
+
+  ceramic.to(".text-ceramic p", {
+    opacity: 1,
+    duration: 1,
+    color: "white",
+  });
+  ScrollTrigger.create({
+    animation: ceramic,
+    trigger: ".text-ceramic",
+    start: "top 80%",
+    end: "bottom 82%",
+    scrub: true,
+    // markers: true,
+  });
+
+  // ***********************
+
+  const element = lockref.current;
+  useEffect(() => {
+    const element = lockref.current;
+    // const trigger = element.offsetTop + element.offsetHeight / 2;
+
+    ScrollTrigger.create({
+      trigger: ".protact-privacy",
+      start: "top 85%",
+      end: "bottom 85%",
+      // markers: true,
+      // scrub: true,
+      onEnter: () => {
+        element.classList.add("animate-lock");
+      },
+      // onLeave:()=>{
+      //   element.classList.remove("animate-lock")
+      // }
+    });
+  }, []);
+
+  // elment.forEach((element, index) => {
+  //   if (index === 2) { // if element is the third h2 tag
+  //     timeline.to(element.querySelector('span'), {
+  //       scaleX: 3, // increase width by 3 times
+  //       duration: 1
+  //     }).to(element.querySelector('span'), {
+  //       scaleX: 4, // increase width by another factor of 4
+  //       duration: 1,
+  //       ease: 'power1.inOut' // add easing for smoother effect
+  //     });
+  //   } else {
+  //     timeline.to(element, {
+  //       fontSize: '200px', // increase font size to 200px
+  //       duration: 1
+  //     });
+  //   }
+  // });
+
+  // elment.forEach((element, index) => {
+  //   if (index === 2) { // if element is the third h2 tag
+  //     const oElement = element.querySelector('span');
+  //     const oWidth = oElement.offsetWidth;
+  //     const oWrapper = document.createElement('span');
+  //     oWrapper.className = 'oWrapper';
+  //     oWrapper.innerHTML = oElement.innerHTML;
+  //     oElement.innerHTML = '';
+  //     oElement.appendChild(oWrapper);
+  //     timeline.to(oWrapper, {
+  //       width: oWidth * 3, // increase width by 3 times
+  //       duration: 1
+  //     }).to(oWrapper, {
+  //       width: oWidth * 4, // increase width by another factor of 4
+  //       duration: 1,
+  //       ease: 'power1.inOut' // add easing for smoother effect
+  //     });
+  //   } else {
+  //     timeline.to(element, {
+  //       fontSize: '200px', // increase font size to 200px
+  //       duration: 1
+  //     });
+  //   }
+  // });
+
+  // const oElement = document.querySelector('.enlarge');
+
+  // ScrollTrigger.create({
+  //   trigger: ".orangeWrapper",
+  //   start: "top 50%",
+  //   end: "bottom 50%",
+  //   onEnter: () => {
+  //     oElement.classList.add("active");
+  //   },
+  //   onLeaveBack: () => {
+  //     oElement.classList.remove("active");
+  //   },
+  //   scrub: true,
+  //   markers: true,
+  // });
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     switchImage();
+  //   }, 2500);
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  // const switchImage = () => {
+  //   switch (currentImg) {
+  //     case 1:
+  //       setCurrentImg("iPhone-14Pro-DeepPurpal2x.jpg");
+  //       break;
+  //     case 2:
+  //       setCurrentImg("iPhone-14Pro-Gold2x.jpg");
+  //       break;
+  //     case 3:
+  //       setCurrentImg("iPhone-14Pro-Silver2x.jpg");
+  //       break;
+  //     case 4:
+  //       setCurrentImg("iPhone-14Pro-SpaceBlack2x.jpg");
+  //       break;
+  //     default:
+  //       setCurrentImg("iPhone-14Pro-DeepPurpal2x.jpg");
+  //       break;
+  //   }
+  // };
+
+  // const stopVideo = () => {
+  //   setIsVideoPlaying(false);
+  // };
+
+  // const text = document.querySelector('.h2enlarge');
+  // let scale = 1;
+  // window.addEventListener('scroll', () => {
+  //   const newScale = 1 + window.scrollY / 1000;
+
+  //   if (newScale !== scale) {
+  //     scale = newScale;
+  //     gsap.to(text, { duration: 0.5, scale , scrollTrigger:fifth });
+  //   }
+  // });
+
+  function handleVideoEnd() {
+    // setSixthvideo("replay");
+  }
+
+  // function handleVideoEnd() {
+  //   setIsVideoPlaying(false);
+  //   setInterval(() => {
+  //     setCurrentImgIndex((currentImgIndex) => (currentImgIndex + 1) % 4);
+  //   }, 3000);
+  // }
+
+  function handleVideoEnds() {
+    setIsVideoPlaying(false);
+    if (currentImgIndex) {
+      setTimeout(() => {
+        setCurrentImg("iPhone-14Pro-Gold2x.jpg");
+      }, 2800);
+      setTimeout(() => {
+        setCurrentImg("iPhone-14Pro-Silver2x.jpg");
+      }, 5000);
+      setTimeout(() => {
+        setCurrentImg("iPhone-14Pro-SpaceBlack2x.jpg");
+      }, 7500);
+      setTimeout(() => {
+        setCurrentImg("iPhone-14Pro-DeepPurpal2x.jpg");
+        // setIsVideoPlaying(true);
+      }, 10000);
+    }
+  }
+
+  function handleReplay() {
+    setSixthvideo("play");
+    videoref.current.currentTime = 0;
+    videoref.current.play();
+  }
+
+  useEffect(() => {
+    handlePlayPause();
+  }, []);
+
+  function handlePlayPause() {
+    if (sixthvideo === "pause") {
+      setSixthvideo("play");
+      videoref.current.play();
+    } else if (sixthvideo === "play") {
+      videoref.current.pause();
+      setSixthvideo("pause");
+    } else if (sixthvideo === "replay") {
+      handleReplay();
+    }
+  }
+
+  return (
+    <ScrollDelay delayTime={10000}>
+      <section>
+        <div className="videoTag">
+          <video autoPlay muted className="videoHolder">
+            <source src="large.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div className="secodContainer">
+          <div className="content_wrapper">
+            <h1>
+              A magical new way to interact with iPhone. A vital safety feature
+              designed to save lives. An innovative 48MP camera for mind-blowing
+              detail. All powered by the ultimate smartphone chip.
+            </h1>
+          </div>
+        </div>
+
+        <div className="thirdd">
+          <div className="thirdContainer">
+            <img src="big.png" alt="bg" />
+          </div>
+
+          <div className="textPro">
+            <h1 className="pro">Pro.</h1>
+            <h1 className="beyond">Beyond.</h1>
+            <h5>iPhone 14 Pro and iPhone 14 Pro Max</h5>
+            <div className="superfast">
+              With superfast 5G<sup>7</sup>
+            </div>
+            <p className="pricing">From ₹129900.00* before trade‑in*</p>
+          </div>
+        </div>
+
+        {/* <div className="fourth">
+        <div className="onClick-phone-colorchange">
+          <div className="phones">
+            {isVideoPlaying ? (
+              <video autoPlay muted onEnded={stopVideo}>
+                <source src="medium.mp4" type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                src={currentImg}
+                alt="iPhone color"
+                id="imgClickAndChange"
+                style={{ display: "block", width: "306px", height: "776px" }}
+              />
+            )}
+          </div>
+          <div className="color-names">
+            <p onClick={() => setCurrentImg("iPhone-14Pro-DeepPurpal2x.jpg")}>
+              Deep Purple
+            </p>
+            <p onClick={() => setCurrentImg("iPhone-14Pro-Gold2x.jpg")}>Gold</p>
+            <p onClick={() => setCurrentImg("iPhone-14Pro-Silver2x.jpg")}>
+              Silver
+            </p>
+            <p onClick={() => setCurrentImg("iPhone-14Pro-SpaceBlack2x.jpg")}>
+              Space Black
+            </p>
+          </div>
+        </div>
+        <div className="text-ceramic">
+          <div className="text-ceramic-size">
+            <p className="bottomSpace">Designed for durability.</p>
+            <p>
+              With Ceramic Shield, tougher than any smartphone glass. Water
+              resistance.1 Surgical-grade stainless steel. 15.54 cm (6.1″) and
+              17.00 cm (6.7″) display sizes.<sup>2</sup> All in four Pro
+              colours.
+            </p>
+          </div>
+        </div>
+        <div className="protact-privacy">
+          <div className="protact-privacy-text">
+            <div className="privacy-img aside-image-privacy"></div>
+            <div className="privacy-text">
+              <p>
+                iPhone is also designed from the ground up to protect your
+                privacy and put you in control of what you share and who you
+                share it with
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+        <div className="fourth">
+          <div className="onClick-phone-colorchange">
+            <div className="phones">
+              <video
+                autoPlay
+                muted
+                onEnded={handleVideoEnds}
+                style={{ display: !isVideoPlaying ? "none" : "block" }}
+              >
+                <source src="medium.mp4" type="video/mp4" />
+              </video>
+              <img
+                src={currentImg}
+                alt="iPhone color"
+                id="imgClickAndChange"
+                className="img-transition"
+                style={{ display: isVideoPlaying ? "none" : "block" }}
+              />
+            </div>
+            <div className="color-names">
+              <p
+                onClick={() => {
+                  setCurrentImg("iPhone-14Pro-DeepPurpal2x.jpg");
+                  setCurrentImgIndex(false);
+                }}
+                style={{
+                  opacity:
+                    currentImg === "iPhone-14Pro-DeepPurpal2x.jpg" ? 1 : 0.5,
+                }}
+              >
+                Deep Purple
+              </p>
+              <p
+                onClick={() => setCurrentImg("iPhone-14Pro-Gold2x.jpg")}
+                style={{
+                  opacity: currentImg === "iPhone-14Pro-Gold2x.jpg" ? 1 : 0.5,
+                }}
+              >
+                Gold
+              </p>
+              <p
+                onClick={() => setCurrentImg("iPhone-14Pro-Silver2x.jpg")}
+                style={{
+                  opacity: currentImg === "iPhone-14Pro-Silver2x.jpg" ? 1 : 0.5,
+                }}
+              >
+                Silver
+              </p>
+              <p
+                onClick={() => setCurrentImg("iPhone-14Pro-SpaceBlack2x.jpg")}
+                style={{
+                  opacity:
+                    currentImg === "iPhone-14Pro-SpaceBlack2x.jpg" ? 1 : 0.5,
+                }}
+              >
+                Space Black
+              </p>
+            </div>
+          </div>
+          <div className="text-ceramic">
+            <div className="text-ceramic-size">
+              <p className="bottomSpace">Designed for durability.</p>
+              <p>
+                With Ceramic Shield, tougher than any smartphone glass. Water
+                resistance.1 Surgical-grade stainless steel. 15.54 cm (6.1″) and
+                17.00 cm (6.7″) display sizes.<sup>2</sup> All in four Pro
+                colours.
+              </p>
+            </div>
+          </div>
+          <div className="protact-privacy">
+            <div className="protact-privacy-text">
+              <div
+                className="privacy-img aside-image-privacy"
+                ref={lockref}
+              ></div>
+              <div className="privacy-text">
+                <p>
+                  iPhone is also designed from the ground up to protect your
+                  privacy and put you in control of what you share and who you
+                  share it with
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section style={{ position: "relative", height: "190vh", zIndex: 3 }}>
+          <div className="fifth" ref={fifth}>
+            <div className="orangeWrapper">
+              <section className="panel orange">
+                <h2 className="h2enlarge">
+                  <span className="line line-2"></span>Meet the
+                </h2>
+                <h2 className="h2enlarge">
+                  <span className="line line-2 testing"></span>new face
+                </h2>
+                <h2 className="h2enlarge">
+                  <span className="line line-2 testing2"></span>of iph
+                  <span className="enlarge"></span>ne
+                </h2>
+              </section>
+            </div>
+          </div>
+
+          <div className="sixth">
+            <div>
+              <div className="content_ContainerSixth">
+                Introducing Dynamic Island, a truly Apple innovation that’s
+                hardware and software — and something in between. It bubbles up
+                music, FaceTime and so much more — all without taking you away
+                from what you’re doing.
+              </div>
+              <div className="pauseandplay">
+                {sixthvideo === "play" && (
+                  <div onClick={handlePlayPause} className="playsix">
+                    pause <BiPauseCircle />
+                  </div>
+                )}
+
+                {sixthvideo === "pause" && (
+                  <div onClick={handlePlayPause} className="playsix">
+                    play <BiPlayCircle />
+                  </div>
+                )}
+
+                {sixthvideo === "replay" && (
+                  <div onClick={handlePlayPause} className="playsix">
+                    replay
+                    <MdReplay />
+                  </div>
+                )}
+                <div className="sixthVideo">
+                  <img
+                    src="https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_large.png"
+                    alt="demo"
+                  />
+                  <div className="gradientofphone"></div>
+                  <video
+                    // autoPlay
+                    muted
+                    className=""
+                    ref={videoref}
+                    onEnded={handleVideoEnd}
+                  >
+                    <source
+                      src="https://www.apple.com/105/media/in/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/large.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div
+          style={{
+            position: "relative",
+            zIndex: 3,
+          }}
+        >
+          <Seventh />
+        </div>
+
+        <div
+          style={{
+            height: "100%",
+            position: "relative",
+            zIndex: 3,
+          }}
+        >
+          <Eighth />
+
+          <Ninth />
+          <Tenth />
+          <Eleventh />
+          <Twelveth />
+          <Thirteenth />
+          <Fourtheen />
+          <Fifteenth />
+          <Sixteenth />
+          <Seventeenth />
+          <Eighteenth />
+          <Ninteenth />
+          <Twenty />
+        </div>
+      </section>
+    </ScrollDelay>
+  );
+}
+
+export default App;

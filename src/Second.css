@@ -1,0 +1,78 @@
+/* body{
+    background-color: white;
+} */
+
+
+
+.secondScreen {
+  /* margin-top: -75vh; */
+}
+
+.screenContainer {
+  position: relative;
+  z-index: 3;
+  height: 200vh;
+}
+
+.screenHolder {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+  margin: 0 auto;
+  background: #000;
+  transform: translateY(calc(50vh - 50% + 52px * 0.5));
+  padding: 1px;
+  border: 1px solid #000;
+  width: 823px;
+  font-size: 56px;
+  line-height: 1.0714285714;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial,
+    sans-serif;
+    will-change: transform;
+
+}
+
+.gradientClass{
+    width: calc(100% + 2px);
+    margin-top: -1px;
+    top: 0;
+    padding-bottom: 999vh;
+    --enhance-hero-intro-gradient-padding-top: 63vh;
+    padding-top: var(--enhance-hero-intro-gradient-padding-top);
+    position: absolute;
+    z-index: 2;
+    background-color: #000;
+    mix-blend-mode: darken;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.gradientClass img{
+    position: relative;
+    left: 50%;
+    margin-left: -720px;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    display: block;
+    width: var(--p-width);
+    height: var(--p-height);
+    --p-width: 1440px;
+    --p-height: 1586px;
+}
+
+ .intro-background {
+    position: relative;
+    left: 50%;
+    margin-left: -720px;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
